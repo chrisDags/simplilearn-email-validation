@@ -73,7 +73,7 @@ public class EmailValidator {
 //
 //        String searchStr = scanner.nextLine();
 //        //check to see if there is a match with the full email string OR the email ids
-//        if(emailList.contains(searchStr) || emailSubStrList.contains(searchStr))
+//        if(emailList.contains(searchStr.toLowerCase()) || emailSubStrList.contains(searchStr.toLowerCase()))
 //            System.out.println("\""+searchStr + "\" is in the ArrayList of emails!");
 //        else
 //            System.out.println("\""+searchStr + "\" does not exist in the ArrayList of emails.");
@@ -108,7 +108,8 @@ public class EmailValidator {
         fillSubStrList(emailList, emailIdList);
         // check to see if there is a match with the full email string OR the email ids
         for(int i = 0; i < emailList.length; i++){
-            if (emailList[i].equals(searchStr) || emailIdList[i].equals(searchStr))
+            if (emailList[i].toLowerCase().equals(searchStr.toLowerCase()) ||
+                    emailIdList[i].toLowerCase().equals(searchStr.toLowerCase()))
                 return "\n\""+searchStr+"\""+" exists in the Array!\n"+"Matched email: "+ emailList[i];
         }
 
