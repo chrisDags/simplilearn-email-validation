@@ -105,7 +105,7 @@ public class EmailValidator {
     private static String checkIfEmailExists(String searchStr, String[] emailList){
         for (String s : emailList) {
             if (s.toLowerCase().equals(searchStr.toLowerCase()) ||
-                    searchStr.toLowerCase().equals(s.substring(0, s.indexOf('@'))))
+                    searchStr.toLowerCase().equals(s.substring(0, s.indexOf('@')).toLowerCase()))
                 return "\n\"" + searchStr + "\"" + " exists in the Array!\n" + "Matched email: " + s;
         }
         return "\""+searchStr+"\""+" does not exist in the Array.";
