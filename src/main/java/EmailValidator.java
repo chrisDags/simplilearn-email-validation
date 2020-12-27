@@ -103,24 +103,13 @@ public class EmailValidator {
 
     // Method is only used for the Array implementation
     private static String checkIfEmailExists(String searchStr, String[] emailList){
-
-        String[] emailIdList = new String[emailList.length];
-        fillSubStrList(emailList, emailIdList);
-        // check to see if there is a match with the full email string OR the email ids
-        for(int i = 0; i < emailList.length; i++){
-            if (emailList[i].toLowerCase().equals(searchStr.toLowerCase()) ||
-                    emailIdList[i].toLowerCase().equals(searchStr.toLowerCase()))
-                return "\n\""+searchStr+"\""+" exists in the Array!\n"+"Matched email: "+ emailList[i];
+        for (String s : emailList) {
+            if (s.toLowerCase().equals(searchStr.toLowerCase()) ||
+                    searchStr.toLowerCase().equals(s.substring(0, s.indexOf('@'))))
+                return "\n\"" + searchStr + "\"" + " exists in the Array!\n" + "Matched email: " + s;
         }
-
         return "\""+searchStr+"\""+" does not exist in the Array.";
     }
 
-    private static void fillSubStrList(String[] emailList, String[] emailIdList) {
-        // fill emailIdList with the email ids.
-        for(int i = 0; i < emailList.length; i++){
-            String elemSubStr = emailList[i].substring(0, emailList[i].indexOf('@'));
-            emailIdList[i] = elemSubStr;
-        }
-    }
+
 }
